@@ -1,0 +1,19 @@
+description = 'Translators'
+
+dependencies {
+    implementation project(':ArtOfIllusion')
+}
+
+jar {
+    manifest {
+        attributes(
+            'Plugin-Version': '0.0.1',
+            'Plugin-Id': 'standard-translators-plugin',            
+            'Plugin-Description': 'Standard Translators Plugin',
+        )
+    }
+}
+
+tasks.withType(Jar) {
+    destinationDir = file("${rootProject.projectDir}/Plugins")
+}

@@ -1,0 +1,16 @@
+
+plugins {
+  id "io.freefair.lombok" version "6.1.0-m3"
+}
+
+apply plugin: 'base'
+
+repositories {
+    mavenCentral()
+}
+
+subprojects {
+    apply from: rootProject.file('common.gradle')
+}
+
+assemble.dependsOn subprojects.jar

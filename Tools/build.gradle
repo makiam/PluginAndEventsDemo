@@ -1,0 +1,20 @@
+description = 'Tools'
+
+dependencies {
+    implementation project(':ArtOfIllusion')
+}
+
+jar {
+    manifest {
+        attributes(
+            'Plugin-Version': '0.0.1',
+            'Plugin-Id': 'standard--tools-plugin',
+            'Plugin-Description': 'Standard Tools Plugin',
+        )
+    }
+}
+
+
+tasks.withType(Jar) {
+    destinationDir = file("${rootProject.projectDir}/Plugins")
+}

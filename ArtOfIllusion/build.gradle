@@ -1,0 +1,23 @@
+
+
+plugins {
+    id 'java'
+    id 'application'
+}
+
+description = 'ArtOfIllusion'
+
+mainClassName = 'artofillusion.ArtOfIllusion'
+
+distributions {
+    main { contents { 
+            from("../Plugins") { into("Plugins") }
+            from("../Textures And Materials") { into("Textures And Materials") }
+        } 
+    }
+}
+
+tasks.distTar.enabled = false
+
+
+
