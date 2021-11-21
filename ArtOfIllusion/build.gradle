@@ -3,6 +3,8 @@
 plugins {
     id 'java'
     id 'application'
+    id "edu.sc.seis.macAppBundle" version "2.3.0"
+    id 'maven-publish'
 }
 
 description = 'ArtOfIllusion'
@@ -18,6 +20,34 @@ distributions {
 }
 
 tasks.distTar.enabled = false
+
+task copyPlugins(type: Copy) {
+    def dest = project.file("${->project.buildDir}/${->project.macAppBundle.appOutputDir}/ArtOfIllusion.app/Contents/Plugins")
+    from("../Plugins") into(dest)
+}
+
+macAppBundle {
+    mainClassName = "artofillusion.ArtOfIllusion"
+
+    bundleJRE = false
+    javaProperties.put("apple.laf.useScreenMenuBar", "true")
+    
+    runtimeConfigurationName = 'runtimeClasspath'
+}
+
+createApp.dependsOn copyPlugins
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'org.artofillusion'
+            artifactId = 'ArtOfIllusion'
+            version = '3.2.0'
+
+            from components.java
+        }
+    }
+}
 
 
 

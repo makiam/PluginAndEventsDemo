@@ -1,4 +1,4 @@
-description = 'Tools'
+description = 'Renderers'
 
 dependencies {
     implementation project(':ArtOfIllusion')
@@ -8,12 +8,11 @@ jar {
     manifest {
         attributes(
             'Plugin-Version': '0.0.1',
-            'Plugin-Id': 'standard--tools-plugin',
-            'Plugin-Description': 'Standard Tools Plugin',
+            'Plugin-Id': 'standard-filters-plugin',            
+            'Plugin-Description': 'Standard Image Filters Plugin',
         )
     }
 }
-
 
 tasks.withType(Jar) {
     destinationDirectory = file("${rootProject.projectDir}/Plugins")

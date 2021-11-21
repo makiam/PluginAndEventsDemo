@@ -1,0 +1,29 @@
+description = 'FatPlugin'
+
+configurations {
+  fatjar
+}
+
+jar {
+    baseName = 'FatPlugin'
+    from { configurations.fatjar.collect { it.isDirectory() ? it : zipTree(it) } }
+    manifest {
+        attributes(
+            'Plugin-Version': '0.0.1',
+            'Plugin-Class': 'artofillusion.FatPlugin',
+            'Plugin-Id': 'demo-fat-plugin',            
+            'Plugin-Description': 'Fat Plugin',
+        )
+    }
+}
+
+dependencies {
+    implementation project(':ArtOfIllusion')
+    implementation group: 'javax.help', name: 'javahelp', version: '2.0.05'
+    fatjar group: 'javax.help', name: 'javahelp', version: '2.0.05'
+    
+}
+
+tasks.withType(Jar) {
+    destinationDirectory = file("${rootProject.projectDir}/Plugins")
+}

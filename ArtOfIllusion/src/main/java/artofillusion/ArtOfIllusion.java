@@ -7,6 +7,7 @@ package artofillusion;
 import artofillusion.event.OtherPluginEvent;
 import artofillusion.event.PluginEvent;
 import artofillusion.image.Filter;
+import artofillusion.renderer.Renderer;
 import artofillusion.tools.Tool;
 import artofillusion.translator.Translator;
 import lombok.Getter;
@@ -47,6 +48,7 @@ public class ArtOfIllusion {
         System.out.println("*******************************************");
         manager.getExtensions(Tool.class).forEach(tool -> tool.execute());
         manager.getExtensions(Filter.class).forEach(tool -> tool.apply());
+        manager.getExtensions(Renderer.class).forEach(tool -> tool.render());
         System.out.println("*******************************************");
 
         EventBus.getDefault().post(new PluginEvent());

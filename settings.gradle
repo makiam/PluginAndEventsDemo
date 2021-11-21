@@ -1,2 +1,2 @@
 rootProject.name = 'PluginAndEventsDemo'
-include 'ArtOfIllusion', 'Filters', 'Tools', 'Translators', 'Lifecycle'
+include 'ArtOfIllusion', 'Filters', 'Tools', 'Translators', 'Renderers', 'Lifecycle', 'FatPlugin'
